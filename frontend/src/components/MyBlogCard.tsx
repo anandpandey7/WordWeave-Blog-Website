@@ -15,7 +15,6 @@ export const MyBlogCard = ({
   authorName,
   title,
   content,
-  authorId,
   publishedDate,
 }: BlogCardProps) => {
   // const loggedInUserId = getLoggedInUserId();
