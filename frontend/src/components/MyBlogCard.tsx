@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getLoggedInUserId } from "../utils/auth";
+// import { getLoggedInUserId } from "../utils/auth";
 
 interface BlogCardProps {
   authorName: string;
@@ -18,8 +18,8 @@ export const MyBlogCard = ({
   authorId,
   publishedDate,
 }: BlogCardProps) => {
-  const loggedInUserId = getLoggedInUserId();
-  const isOwner = loggedInUserId === authorId;
+  // const loggedInUserId = getLoggedInUserId();
+  // const isOwner = loggedInUserId === authorId;
   return (
     <Link to={`/blog/${id}`}>
       <div className="p-4 border-b border-slate-200 pb-4 w-full max-w-screen-md cursor-pointer ">

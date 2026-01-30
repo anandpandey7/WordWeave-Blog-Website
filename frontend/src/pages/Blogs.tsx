@@ -12,23 +12,32 @@ export const Blogs = () => {
 
   const navigate = useNavigate();
     useEffect(() => {
-        const token = localStorage.getItem("token");
+      // FIXED with the help of multi modal model
+      const token = localStorage.getItem("token");
 
-        if (token) {
-            axios
-            .get(`${BACKEND_URL}/api/v1/user/verifyToken`, {
-                headers: { Authorization: `Bearer ${token}` },
-            })
-            .then((response) => {
-                if (!response.data.success) {
-                navigate("/signin"); // Redirect if token is valid
-                }
-            })
-            .catch(() => {
-                localStorage.removeItem("token"); // Remove invalid token
-            });
-        }
-    }, [navigate]);
+      // CASE 1: No token at all
+      if (!token) {
+          navigate("/signin");
+          return;
+      }
+
+      // CASE 2: Token exists, verify it
+      axios
+          .get(`${BACKEND_URL}/api/v1/user/verifyToken`, {
+              headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+              // If backend returns success: false, redirect
+              if (!response.data.success) {
+                  navigate("/signin");
+              }
+          })
+          .catch(() => {
+              // If request fails (e.g., 401 Unauthorized), clean up and redirect
+              localStorage.removeItem("token");
+              navigate("/signin");
+          });
+  }, [navigate]);
 
   if (loading && blogs.length === 0) {
     return (

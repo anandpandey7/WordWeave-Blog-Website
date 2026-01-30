@@ -63,7 +63,7 @@ export const User = () => {
                     title={blog.title}
                     content={blog.content}
                     authorId={blog.authorId}
-                    authorName={blog.author?.name || "Anonymous"}
+                    authorName={user?.name || "Anonymous"}
                     publishedDate={new Date(blog.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',

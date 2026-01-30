@@ -86,6 +86,10 @@ export type UserPost = {
     title: string;
     content: string;
     createdAt: string;
+    authorId: string; 
+    author: {         
+        name: string;
+    };
 };
 
 export type User = {
