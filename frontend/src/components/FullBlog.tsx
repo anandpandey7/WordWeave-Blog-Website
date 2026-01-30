@@ -73,7 +73,7 @@ export const FullBlog = ({ blog }: { blog: Blog | null }) => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Author</h3>
                   <div className="flex items-center">
                     <div className="pr-4">
-                      <Avatar name={blog.author.name} />
+                      <Avatar name={blog.author.name || "Anonymous"} />
                     </div>
                     <div>
                       <div className="text-xl font-bold text-gray-900">{blog.author.name}</div>

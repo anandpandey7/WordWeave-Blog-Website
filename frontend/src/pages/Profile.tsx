@@ -76,7 +76,7 @@ export const Profile = () => {
                   id={post.id}
                   title={post.title}
                   content={post.content}
-                  authorId={profile?.id}
+                  authorId={profile?.id || "unknown"}
                   authorName={profile?.name || "Anonymous"}
                   publishedDate={new Date(post.createdAt).toLocaleDateString('en-US', {
                     year: 'numeric',
